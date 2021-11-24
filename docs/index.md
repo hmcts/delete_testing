@@ -16,8 +16,6 @@ At the end of this tutorial, you should be able to access an working application
 2. Create Helm values file with following contents(this is only needed in the lab as the application will be run on sandbox).
 
    CFT: values.sandbox.template.yaml
-
-   SDS: values.sbox.template.yaml
    
     ```
         java:
@@ -31,52 +29,24 @@ At the end of this tutorial, you should be able to access an working application
 
    CFT: [jenkins](https://sandbox-build.platform.hmcts.net)
 
-   SDS: [jenkins](https://sds-sandbox-build.platform.hmcts.net)
-
 6. Run the jenkins pipeline against the `master` branch.
 
 7. We load balance across AKS clusters using `Azure Application Gateway`. Add couple of lines of config for the application.
 
    CFT:  [config file](https://github.com/hmcts/azure-platform-terraform/blob/master/environments/sbox/backend_lb_config.yaml)
 
-   SDS:  [config file](https://github.com/hmcts/sharedservices-azure-platform/blob/master/environments/sbox/backend_lb_config.yaml)
-    ```
+      ```
            #labs
                - product: "labs"
                  component:     #githubreponame without "labs" prefix
-
-8. Azure Front Door is our entry point in HMCTS. Add the following lines of code for the app.
-
-   CFT: [config file](https://github.com/hmcts/azure-platform-terraform/blob/master/environments/sbox/sbox.tfvars)
-    ```
-     {
-        product          = "labs"
-        name             = "#githubreponame without "labs" prefix"
-        custom_domain    = "your-app.service.core-compute-sandbox.internal"
-        backend_domain   = ["firewall-sbox-int-palo-sbox.uksouth.cloudapp.azure.com"]
-        certificate_name = "wildcard-sandbox-platform-hmcts-net"
-      }
-    ```
-   
-   SDS: [config file](https://github.com/hmcts/sharedservices-azure-platform/blob/master/environments/sbox/sbox.tfvars)
-
-    ```
-       {
-        product          = "labs"
-        name             = "#githubreponame without "labs" prefix"
-        custom_domain    = "your-app.sandbox.platform.hmcts.net"
-        backend_domain   = ["firewall-sbox-int-palo-sdsapimgmt.uksouth.cloudapp.azure.com"]
-        certificate_name = "wildcard-sandbox-platform-hmcts-net"
-      }
-
 
 9. We practise [GitOps](https://www.weave.works/technologies/gitops/) for application deployment to Kubernetes.
 
    CFT: [repo](https://github.com/hmcts/cnp-flux-config)
 
-   SDS: [repo](https://github.com/hmcts/shared-services-flux)
 
 10. Access the deployed application using the URL mentioned in FrontDoor code.
+
     ```
     custom_domain    = "your-app.sandbox.platform.hmcts.net"   
    
