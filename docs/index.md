@@ -60,7 +60,7 @@ At the end of this tutorial, you should be able to access an working application
 
 1. We practise [GitOps](https://www.weave.works/technologies/gitops/) for application deployment to Kubernetes.
 
-   CFT: Refer to [documentation.]( https://github.com/hmcts/cnp-flux-config/blob/master/docs/app-deployment-v2.md)
+   CFT: Read the documentation and follow the instructions [here]( https://github.com/hmcts/cnp-flux-config/blob/master/docs/app-deployment-v2.md)
 
 #### Access application
 
