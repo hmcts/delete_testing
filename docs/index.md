@@ -55,7 +55,7 @@ This guide uses a pre-configured application from an template which can be deplo
                - product: "labs"
                  component:     #githubreponame without "labs" prefix
 
-8. Azure Front Door is our entry point in HMCTS. Add following line of code for the app.
+8. Azure Front Door is our entry point in HMCTS. Add the following lines of code for the app.
 
    CFT: [config file](https://github.com/hmcts/azure-platform-terraform/blob/master/environments/sbox/sbox.tfvars)
     ```
