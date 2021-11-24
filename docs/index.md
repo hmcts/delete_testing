@@ -90,7 +90,7 @@ This guide uses a pre-configured application from an template which can be deplo
     ```
     custom_domain    = "your-app.sandbox.platform.hmcts.net"   
    
-11. Helm Charts can be customized by updating  corresponding values file for each environment. Values files located under `/charts/<repo-name>/values.<ENV>.template.yaml`  
+11. Helm Charts can be customised by updating corresponding values file for each environment. Values files located under `/charts/<repo-name>/values.<ENV>.template.yaml`  
  
 12. Environment variables can be passed by updating the corresponding values file in Helm chart. 
  
