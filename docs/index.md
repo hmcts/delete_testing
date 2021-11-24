@@ -22,7 +22,7 @@ At the end of this tutorial, you should be able to access an working application
 
 #### Create a Repository and build pipeline
 
-1. Access [Backstage](https://backstage.platform.hmcts.net/create) to create a new github repo by selecting [`Spring Boot Service`](https://backstage.platform.hmcts.net/create/templates/springboot-template) predefined template. Please make sure name of  Github repo  starts with `labs*`. This enables Jenkins build tool to organize the folder based on Github repo names.
+1. Access [Backstage](https://backstage.platform.hmcts.net/create) to create a new github repo by selecting predefined [`Spring Boot Service`](https://backstage.platform.hmcts.net/create/templates/springboot-template) template. Please make sure name of  Github repo  starts with `labs*`. This enables Jenkins build tool to organize the folder based on Github repo names.
 
 2. Create Helm values file with following contents(this is only needed in the lab as the application will be run on sandbox).
 
@@ -55,7 +55,7 @@ At the end of this tutorial, you should be able to access an working application
            #labs
                - product: "labs"
                  component:     #githubreponame without "labs" prefix
-
+   
 #### Deploy application
 
 1. We practise [GitOps](https://www.weave.works/technologies/gitops/) for application deployment to Kubernetes.
