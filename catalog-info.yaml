@@ -8,4 +8,4 @@ metadata:
 spec:
   type: other
   lifecycle: unknown
-  owner: "DTS Platform Operations"
+  owner: dts_platform_operations
