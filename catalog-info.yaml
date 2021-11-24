@@ -4,6 +4,7 @@ metadata:
   name: golden-path-java
   annotations:
     github.com/project-slug: hmcts/golden-path-java
+    backstage.io/techdocs-ref: dir:.
 spec:
   type: other
   lifecycle: unknown
