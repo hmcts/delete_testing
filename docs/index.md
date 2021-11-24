@@ -6,25 +6,14 @@ Before working through the tutorial, we recommend reading following pages and as
 - https://hmcts.github.io/onboarding
 - https://hmcts.github.io/ways-of-working/
 
-This guide uses a pre-configured application from an template which can be deployed from [Backstage](https://backstage.platform.hmcts.net/). Application is deployed to AKS(kubernetes) cluster inside `labs` namespace in sbox/sandbox environment.
+This guide uses a pre-configured application from a template. Application is deployed to a kubernetes cluster. 
+At the end of this tutorial, you should be able to access an working application via VPN and made changes to it.
 
 ## Steps
 
-1. Access [Backstage](https://backstage.platform.hmcts.net/create) to create a new github repo containing application template. Please make sure name of  Github repo  starts with `labs*`. This enables Jenkins build tool to organize the folder based on Github repo names.
+1. Access [Backstage](https://backstage.platform.hmcts.net/create) to create a new github repo by selecting [`Spring Boot Service`](https://backstage.platform.hmcts.net/create/templates/springboot-template) predefined template. Please make sure name of  Github repo  starts with `labs*`. This enables Jenkins build tool to organize the folder based on Github repo names.
 
-2. Create `Jenkinsfile_parameterized`  file in the repo with following contents.
-    ```
-        #!groovy
-        
-        @Library("Infrastructure")
-        
-        def type = "java"
-        def product = "labs"
-        def component = "mohanalatest"
-        
-        withPipeline(type, product, component) {
-        }
-3. Create Helm values file with following contents.
+2. Create Helm values file with following contents(this is only needed in the lab as the application will be run on sandbox).
 
    CFT: values.sandbox.template.yaml
 
@@ -35,6 +24,7 @@ This guide uses a pre-configured application from an template which can be deplo
           # Don't modify below here
           image: ${IMAGE_NAME}
           ingressHost: ${SERVICE_FQDN}
+   
 4. Get the Pull Request reviewed and merged.
 
 5. Login to Jenkins and select "HMCTS-Labs" folder. Scan the organization by clicking on `Scan Organization Now`. New repository should be listed under repositires after scan finishes. Logs can be moinitored under `Scan Organization Log`. Any github repos that starts with `labs*` will be listed as part of this scan.
