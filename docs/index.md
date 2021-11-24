@@ -29,9 +29,10 @@ At the end of this tutorial, you should be able to access an working application
 
    CFT: [jenkins](https://sandbox-build.platform.hmcts.net)
 
+
 6. Run the jenkins pipeline against the `master` branch.
 
-7. We load balance across AKS clusters using `Azure Application Gateway`. Add couple of lines of config for the application.
+7. We load balance across AKS clusters using `Azure Application Gateway`. Add a couple of lines of config for the application.
 
    CFT:  [config file](https://github.com/hmcts/azure-platform-terraform/blob/master/environments/sbox/backend_lb_config.yaml)
 
