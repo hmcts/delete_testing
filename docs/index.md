@@ -27,7 +27,7 @@ At the end of this tutorial, you should be able to access an working application
    
 4. Get the Pull Request reviewed and merged.
 
-5. Login to Jenkins and select "HMCTS-Labs" folder. Scan the organization by clicking on `Scan Organization Now`. New repository should be listed under repositires after scan finishes. Logs can be moinitored under `Scan Organization Log`. Any github repos that starts with `labs*` will be listed as part of this scan.
+5. Login to Jenkins and select "HMCTS - Labs" folder. Scan the organization by clicking on `Scan Organization Now`. New repository should be listed under repositories after scan finishes. Logs can be monitored under `Scan Organization Log`. Any GitHub repository that starts with `labs*` will be listed as part of this scan.
 
    CFT: [jenkins](https://sandbox-build.platform.hmcts.net)
 
