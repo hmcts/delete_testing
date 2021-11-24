@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: golden-path-java
+  annotations:
+    github.com/project-slug: hmcts/golden-path-java
+spec:
+  type: other
+  lifecycle: unknown
+  owner: mokainos
