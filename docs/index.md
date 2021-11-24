@@ -1,5 +1,5 @@
 ## Overview
-This guide walk-through the process of deploying an Sample Java application in Cloud Platform.
+This guide walk-through the process of deploying an Sample Java application in CFT environment.
 
 This guide uses a pre-configured application from a template. Application is deployed to a kubernetes cluster. 
 At the end of this tutorial, you should be able to access an working application via VPN and made changes to it.
