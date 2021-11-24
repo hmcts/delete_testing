@@ -41,7 +41,7 @@ This guide uses a pre-configured application from an template which can be deplo
 
    CFT: [jenkins](https://sandbox-build.platform.hmcts.net)
 
-   SDS: [jenkins](https://sds-sandbox-build.platform.hmcts.net)
+   SDS: [jenkins](https://sds-sandbox-build.platform.hmcts.net/job/HMCTS_Sandbox_LABS/)
 
 6. Run the jenkins pipeline against the `master` branch.
 
