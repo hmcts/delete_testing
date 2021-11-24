@@ -1,5 +1,5 @@
 ## Overview
-This guide walk-through the process of deploying an Sample Java application in CFT environment.
+This guide walk-through the process of deploying an Sample Java application in CFT.
 
 This guide uses a pre-configured application from a template. Application is deployed to a kubernetes cluster. 
 At the end of this tutorial, you should be able to access an working application via VPN and made changes to it.
@@ -28,7 +28,7 @@ At the end of this tutorial, you should be able to access an working application
 
    CFT: values.sandbox.template.yaml
    
-    ```
+    
         java:
           # Don't modify below here
           image: ${IMAGE_NAME}
@@ -51,7 +51,7 @@ At the end of this tutorial, you should be able to access an working application
 
    CFT:  [config file](https://github.com/hmcts/azure-platform-terraform/blob/master/environments/sbox/backend_lb_config.yaml)
 
-      ```
+  
            #labs
                - product: "labs"
                  component:     #githubreponame without "labs" prefix
@@ -66,7 +66,7 @@ At the end of this tutorial, you should be able to access an working application
 
 1. Access the deployed application using the URL.
 
-    ```
+  
       http://<product>-<component>-sbox.service.core-compute-sandbox.internal   
    
 #### Customize application
