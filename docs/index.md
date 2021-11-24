@@ -1,15 +1,26 @@
 ## Overview
 This guide walk-through the process of deploying an Sample Java application in Cloud Platform.
 
-Before working through the tutorial, we recommend reading following pages and assume you have all the required accounts.
-
-- https://hmcts.github.io/onboarding
-- https://hmcts.github.io/ways-of-working/
-
 This guide uses a pre-configured application from a template. Application is deployed to a kubernetes cluster. 
 At the end of this tutorial, you should be able to access an working application via VPN and made changes to it.
 
+## Prerequisite
+
+`Github` access is required to complete the steps in this tutorial. Following the [link](https://hmcts.github.io/onboarding/team/github.html#github) to request access.
+
+## High Level Steps
+
+- Create a Repository and build pipeline
+- Build application
+- Configure load balancing for HA
+- Deploy application
+- Access application
+- Customize application
+- Troubleshooting
+
 ## Steps
+
+#### Create a Repository and build pipeline
 
 1. Access [Backstage](https://backstage.platform.hmcts.net/create) to create a new github repo by selecting [`Spring Boot Service`](https://backstage.platform.hmcts.net/create/templates/springboot-template) predefined template. Please make sure name of  Github repo  starts with `labs*`. This enables Jenkins build tool to organize the folder based on Github repo names.
 
@@ -23,16 +34,20 @@ At the end of this tutorial, you should be able to access an working application
           image: ${IMAGE_NAME}
           ingressHost: ${SERVICE_FQDN}
    
-4. Get the Pull Request reviewed and merged.
+3. Get the Pull Request reviewed and merged.
 
-5. Login to Jenkins and select "HMCTS - Labs" folder. Scan the organization by clicking on `Scan Organization Now`. New repository should be listed under repositories after scan finishes. Logs can be monitored under `Scan Organization Log`. Any GitHub repository that starts with `labs*` will be listed as part of this scan.
+#### Build application
 
-   CFT: [jenkins](https://sandbox-build.platform.hmcts.net)
+1. Login to Jenkins and select "HMCTS - Labs" folder. Scan the organization by clicking on `Scan Organization Now`. New repository should be listed under repositories after scan finishes. Logs can be monitored under `Scan Organization Log`. Any GitHub repository that starts with `labs*` will be listed as part of this scan.
+
+   CFT: [jenkins](https://sandbox-build.platform.hmcts.net/job/HMCTS_LABS/)
 
 
-6. Run the jenkins pipeline against the `master` branch.
+2. Run the jenkins pipeline against the `master` branch.
 
-7. We load balance across AKS clusters using `Azure Application Gateway`. Add a couple of lines of config for the application.
+#### Configure load balancing for HA
+
+1. We load balance across AKS clusters using `Azure Application Gateway`. Add a couple of lines of config for the application.
 
    CFT:  [config file](https://github.com/hmcts/azure-platform-terraform/blob/master/environments/sbox/backend_lb_config.yaml)
 
@@ -41,27 +56,33 @@ At the end of this tutorial, you should be able to access an working application
                - product: "labs"
                  component:     #githubreponame without "labs" prefix
 
-9. We practise [GitOps](https://www.weave.works/technologies/gitops/) for application deployment to Kubernetes.
+#### Deploy application
 
-   CFT: [repo](https://github.com/hmcts/cnp-flux-config)
+1. We practise [GitOps](https://www.weave.works/technologies/gitops/) for application deployment to Kubernetes.
 
+   CFT: Refer to [documentation.]( https://github.com/hmcts/cnp-flux-config/blob/master/docs/app-deployment-v2.md)
 
-10. Access the deployed application using the URL mentioned in FrontDoor code.
+#### Access application
+
+1. Access the deployed application using the URL.
 
     ```
-    custom_domain    = "your-app.sandbox.platform.hmcts.net"   
+      http://<product>-<component>-sbox.service.core-compute-sandbox.internal   
    
-11. Helm Charts can be customised by updating corresponding values file for each environment. Values files located under `/charts/<repo-name>/values.<ENV>.template.yaml`  
+#### Customize application
+
+1. Helm Charts can be customised by updating corresponding values file for each environment. Values files located under `/charts/<repo-name>/values.<ENV>.template.yaml`  
  
-12. Environment variables can be passed by updating the corresponding values file in Helm chart. 
+2. Environment variables can be passed by updating the corresponding values file in Helm chart. 
  
-       ```
+       
        java:
          environment:
            FAVOURITE_FRUIT: plum   # KEY must be in uppercase
 
+#### Troubleshooting
 
-13. Troubleshooting
+1. Troubleshooting
 
      [Follow](https://hmcts.github.io/ways-of-working/troubleshooting/#troubleshooting-issues) the link to refer to troubleshoot steps.
      - Pod/Application logs can viewed using `kubectl` command.
@@ -71,7 +92,7 @@ At the end of this tutorial, you should be able to access an working application
 
 ## Slack Channels
 
-- `#platops-labs` is for support requests to the Platform Operations team
+- `#golden-path` is for support requests to the Platform Operations team
 - `#labs-build-notices` jenkins build notices channel
 
 
