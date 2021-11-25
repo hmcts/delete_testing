@@ -10,26 +10,29 @@ At the end of this tutorial, you will be able to access your application via VPN
 
 `Github` access is required to complete the steps in this tutorial. Following the [link](https://hmcts.github.io/onboarding/team/github.html#github) to request access.
 
-## High Level Steps
-
-- Create a Repository and build pipeline
-- Build application
-- Configure load balancing for HA
-- Deploy application
-- Access application
-- Customise application
-- Troubleshooting
 
 ## Steps
 
 #### Create a Repository and build pipeline
 
-1. Access [Backstage](https://backstage.platform.hmcts.net/create) to create a new github repo by selecting predefined [`Spring Boot Service`](https://backstage.platform.hmcts.net/create/templates/springboot-template) template. Please make sure name of  Github repo  starts with `labs*`. This enables Jenkins build tool to organize the folder based on Github repo names.
-
+1. Click `Create` in the Backstage sidebar and select [`Spring Boot Service`](https://backstage.platform.hmcts.net/create) template. Prefix your GitHub repository name with `labs-*`. This enables Jenkins to automatically pickup the folder based on the GitHub repository name.
+   
+   Description and default values for various `Fields` in the template.
+    - Product:  `labs`        #Product this component belongs to, normally the team name, e.g. cmc, labs
+    - Component:            #Name of the component, e.g. backend
+    - Slack contact channel:#Which channel (or user) to contact if there's any issues with this service.
+    - Description:          #Description of the application, a sensible default will be used if not specified
+    - HTTP port:            #The port to run the app on.
+    - GitHub admin team:    #Which GitHub team should have admin permissions, use the format hmcts/<team-id>
+    - Owner:                #Owner of the Component
+    - Host:  `github.com`
+    - Owner:                #The organization, user or project that this repo will belong to
+    - Repository: `labs-<Component>`     #The name of the repository
 2. Create Helm values file with following contents(this is only needed in the lab as the application will be run on sandbox).
 
    CFT: values.sandbox.template.yaml
 
+    ```yaml
         java:
           # Don't modify below here
           image: ${IMAGE_NAME}
@@ -39,19 +42,16 @@ At the end of this tutorial, you will be able to access your application via VPN
 
 #### Build application
 
-1. Login to Jenkins and select "HMCTS - Labs" folder. Scan the organization by clicking on `Scan Organization Now`. New repository should be listed under repositories after scan finishes. Logs can be monitored under `Scan Organization Log`. Any GitHub repository that starts with `labs*` will be listed as part of this scan.
-
-   CFT: [jenkins](https://sandbox-build.platform.hmcts.net/job/HMCTS_LABS/)
+1. Login to Jenkins and select ["HMCTS - Labs"](https://sandbox-build.platform.hmcts.net/job/HMCTS_Sandbox_LABS/) folder. Scan the organization by clicking on `Scan Organization Now`. New repository should be listed under repositories after scan finishes. Logs can be monitored under `Scan Organization Log`. Any GitHub repository that starts with `labs*` will be listed as part of this scan.
 
 
 2. Run the jenkins pipeline against the `master` branch.
 
 #### Configure load balancing for HA
 
-1. We load balance across AKS clusters using `Azure Application Gateway`. Add a couple of lines of config for the application.
+1. We load balance across AKS clusters using `Azure Application Gateway`. Add a couple of lines of config for the application in [config file](https://github.com/hmcts/azure-platform-terraform/blob/master/environments/sbox/backend_lb_config.yaml).
 
-   CFT:  [config file](https://github.com/hmcts/azure-platform-terraform/blob/master/environments/sbox/backend_lb_config.yaml)
-
+      ```yaml
            #labs
                - product: "labs"
                  component:     #githubreponame without "labs" prefix
@@ -59,8 +59,7 @@ At the end of this tutorial, you will be able to access your application via VPN
 #### Deploy application
 
 1. We practise [GitOps](https://www.weave.works/technologies/gitops/) for application deployment to Kubernetes.
-
-   CFT: Read the documentation and follow the instructions [here]( https://github.com/hmcts/cnp-flux-config/blob/master/docs/app-deployment-v2.md)
+   Read the [documentation]( https://github.com/hmcts/cnp-flux-config/blob/master/docs/app-deployment-v2.md) and follow the instructions.
 
 #### Access application
 
@@ -71,22 +70,21 @@ At the end of this tutorial, you will be able to access your application via VPN
    
 #### Customise application
 
-1. Helm Charts can be customised by updating corresponding values file for each environment. Values files located under `/charts/<repo-name>/values.<ENV>.template.yaml`  
+1. Helm Charts can be customised by updating corresponding values file for each environment. Update `values.yaml` file located under `/charts/<repo-name>` directory.  
  
 2. Environment variables can be passed by updating the corresponding values file in Helm chart. 
  
-       
+   ```yaml
        java:
          environment:
            FAVOURITE_FRUIT: plum   # KEY must be in uppercase
 
-#### Troubleshooting
+## Troubleshooting
 
 [Follow](https://hmcts.github.io/ways-of-working/troubleshooting/#troubleshooting-issues) the link to refer to troubleshooting steps.
 
  - Pod/Application logs can viewed using `kubectl` command.
  - For Deployment issue check flux logs / resource status.  
-        
         
 
 ## Slack Channels
