@@ -19,7 +19,9 @@ At the end of this tutorial, you will be able to access your application via VPN
    
    Description and default values for various `Fields` in the template.
     - Product:  `labs`        #Product this component belongs to, normally the team name, e.g. cmc, labs
+    
     - Component:            #Name of the component, e.g. backend
+    
     - Slack contact channel:#Which channel (or user) to contact if there's any issues with this service.
     - Description:          #Description of the application, a sensible default will be used if not specified
     - HTTP port:            #The port to run the app on.
@@ -32,7 +34,7 @@ At the end of this tutorial, you will be able to access your application via VPN
 
    CFT: values.sandbox.template.yaml
 
-    ```yaml
+   ```yaml
         java:
           # Don't modify below here
           image: ${IMAGE_NAME}
