@@ -3,8 +3,8 @@
 This guide walk-through the process of deploying an Sample Java application in CFT.
 
 
-This guide uses a pre-configured application from a template. Application is deployed to a kubernetes cluster. 
-At the end of this tutorial, you should be able to access an working application via VPN and made changes to it.
+An application will be generated from a template and deployed to a kubernetes cluster.
+At the end of this tutorial, you will be able to access your application via VPN and will have made changes to it.
 
 ## Prerequisite
 
@@ -17,7 +17,7 @@ At the end of this tutorial, you should be able to access an working application
 - Configure load balancing for HA
 - Deploy application
 - Access application
-- Customize application
+- Customise application
 - Troubleshooting
 
 ## Steps
@@ -69,7 +69,7 @@ At the end of this tutorial, you should be able to access an working application
     ```
       http://<product>-<component>-sbox.service.core-compute-sandbox.internal   
    
-#### Customize application
+#### Customise application
 
 1. Helm Charts can be customised by updating corresponding values file for each environment. Values files located under `/charts/<repo-name>/values.<ENV>.template.yaml`  
  
@@ -82,11 +82,10 @@ At the end of this tutorial, you should be able to access an working application
 
 #### Troubleshooting
 
-1. Troubleshooting
+[Follow](https://hmcts.github.io/ways-of-working/troubleshooting/#troubleshooting-issues) the link to refer to troubleshooting steps.
 
-     [Follow](https://hmcts.github.io/ways-of-working/troubleshooting/#troubleshooting-issues) the link to refer to troubleshoot steps.
-     - Pod/Application logs can viewed using `kubectl` command.
-     - For Deployment issue check Flux.  
+ - Pod/Application logs can viewed using `kubectl` command.
+ - For Deployment issue check flux logs / resource status.  
         
         
 
