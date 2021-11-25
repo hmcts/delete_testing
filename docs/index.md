@@ -4,7 +4,7 @@ This guide walk-through the process of deploying an Sample Java application in C
 
 
 This guide uses a pre-configured application from a template. Application is deployed to a kubernetes cluster. 
-At the end of this tutorial, you should be able to access an working application via VPN and made changes to it.
+At the end of this tutorial, you will be able to access your application via VPN and will have made changes to it.
 
 ## Prerequisite
 
