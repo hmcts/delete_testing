@@ -18,16 +18,28 @@ At the end of this tutorial, you will be able to access your application via VPN
 1. Click `Create` in the Backstage sidebar and select [`Spring Boot Service`](https://backstage.platform.hmcts.net/create) template. Prefix your GitHub repository name with `labs-*`. This enables Jenkins to automatically pickup the folder based on the GitHub repository name.
    
    Description and default values for various `Fields` in the template.
-    - Product:  `labs`        #Product this component belongs to, normally the team name, e.g. cmc, labs
-    - Component:            #Name of the component, e.g. backend
-    - Slack contact channel:#Which channel (or user) to contact if there's any issues with this service.
-    - Description:          #Description of the application, a sensible default will be used if not specified
-    - HTTP port:            #The port to run the app on.
-    - GitHub admin team:    #Which GitHub team should have admin permissions, use the format hmcts/<team-id>
-    - Owner:                #Owner of the Component
-    - Host:  `github.com`
-    - Owner:                #The organization, user or project that this repo will belong to
-    - Repository: `labs-<Component>`     #The name of the repository
+   
+   - Product:  `labs`        #Product this component belongs to, normally the team name, e.g. cmc, labs
+    
+   - Component:            #Name of the component, e.g. backend
+    
+   - Slack contact channel:#Which channel (or user) to contact if there's any issues with this service.
+    
+   - Description:          #Description of the application, a sensible default will be used if not specified
+    
+   - HTTP port:            #The port to run the app on.
+    
+   - GitHub admin team:    #Which GitHub team should have admin permissions, use the format hmcts/<team-id>
+   
+   - Owner:                #Owner of the Component
+   
+   - Host:  `github.com`
+   
+   - Owner:                #The organization, user or project that this repo will belong to
+   
+   - Repository: `labs-<Component>`     #The name of the repository
+   
+    
 2. Create Helm values file with following contents(this is only needed in the lab as the application will be run on sandbox).
 
    CFT: values.sandbox.template.yaml
@@ -37,6 +49,7 @@ At the end of this tutorial, you will be able to access your application via VPN
           # Don't modify below here
           image: ${IMAGE_NAME}
           ingressHost: ${SERVICE_FQDN}
+    ```
    
 3. Get the Pull Request reviewed and merged.
 
@@ -51,11 +64,12 @@ At the end of this tutorial, you will be able to access your application via VPN
 
 1. We load balance across AKS clusters using `Azure Application Gateway`. Add a couple of lines of config for the application in [config file](https://github.com/hmcts/azure-platform-terraform/blob/master/environments/sbox/backend_lb_config.yaml).
 
-      ```yaml
-           #labs
-               - product: "labs"
-                 component:     #githubreponame without "labs" prefix
-   
+   ```yaml
+   #labs
+      - product: "labs"
+        component:     #githubreponame without "labs" prefix
+   ```
+     
 #### Deploy application
 
 1. We practise [GitOps](https://www.weave.works/technologies/gitops/) for application deployment to Kubernetes.
@@ -65,8 +79,9 @@ At the end of this tutorial, you will be able to access your application via VPN
 
 1. Access the deployed application using the URL.
 
-    ```
-      http://<product>-<component>-sbox.service.core-compute-sandbox.internal   
+   ```
+   http://<product>-<component>-sbox.service.core-compute-sandbox.internal 
+   ```  
    
 #### Customise application
 
@@ -75,9 +90,10 @@ At the end of this tutorial, you will be able to access your application via VPN
 2. Environment variables can be passed by updating the corresponding values file in Helm chart. 
  
    ```yaml
-       java:
-         environment:
-           FAVOURITE_FRUIT: plum   # KEY must be in uppercase
+   java:
+     environment:
+       FAVOURITE_FRUIT: plum   # KEY must be in uppercase
+   ```
 
 ## Troubleshooting
 
