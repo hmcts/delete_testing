@@ -66,6 +66,7 @@ At the end of this tutorial, you should be able to access an working application
 
 1. Access the deployed application using the URL.
 
+    ```
       http://<product>-<component>-sbox.service.core-compute-sandbox.internal   
    
 #### Customize application
