@@ -78,7 +78,7 @@ At the end of this tutorial, you will be able to access your application via VPN
 
 1. Access the deployed application using the URL.
 
-   ```
+   ```sh
       http://<product>-<component>-sbox.service.core-compute-sandbox.internal 
    ```
    
@@ -89,9 +89,9 @@ At the end of this tutorial, you will be able to access your application via VPN
 2. Environment variables can be passed by updating the corresponding values file in Helm chart. 
  
    ```yaml
-       java:
-         environment:
-           FAVOURITE_FRUIT: plum   # KEY must be in uppercase
+   java:
+     environment:
+       FAVOURITE_FRUIT: plum   # KEY must be in uppercase
    ```
 
 ## Troubleshooting
