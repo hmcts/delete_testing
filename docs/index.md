@@ -3,7 +3,11 @@
 This guide walk-through the process of deploying an Sample Java application in CFT.
 
 
+<<<<<<< HEAD
 An application will be generated from a template and deployed to a kubernetes cluster.
+=======
+This guide uses a pre-configured application from a template. Application is deployed to a kubernetes cluster. 
+>>>>>>> c0c4e30c536c227ebcc6c24df8ab9a56e6812701
 At the end of this tutorial, you will be able to access your application via VPN and will have made changes to it.
 
 ## Prerequisite
