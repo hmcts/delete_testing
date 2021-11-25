@@ -63,10 +63,11 @@ At the end of this tutorial, you will be able to access your application via VPN
 
 1. We load balance across AKS clusters using `Azure Application Gateway`. Add a couple of lines of config for the application in [config file](https://github.com/hmcts/azure-platform-terraform/blob/master/environments/sbox/backend_lb_config.yaml).
 
- 
-          #labs
-               - product: "labs"
-                 component:     #githubreponame without "labs" prefix
+ ```yaml
+ #labs
+    - product: "labs"
+      component:     #githubreponame without "labs" prefix
+ ```
    
 #### Deploy application
 
@@ -77,8 +78,9 @@ At the end of this tutorial, you will be able to access your application via VPN
 
 1. Access the deployed application using the URL.
 
-    ```
-      http://<product>-<component>-sbox.service.core-compute-sandbox.internal   
+   ```
+      http://<product>-<component>-sbox.service.core-compute-sandbox.internal 
+   ```
    
 #### Customise application
 
@@ -90,6 +92,7 @@ At the end of this tutorial, you will be able to access your application via VPN
        java:
          environment:
            FAVOURITE_FRUIT: plum   # KEY must be in uppercase
+   ```
 
 ## Troubleshooting
 
