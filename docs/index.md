@@ -43,7 +43,6 @@ At the end of this tutorial, you will be able to access your application via VPN
 
    CFT: values.sandbox.template.yaml
 
-   ```yaml
         java:
           # Don't modify below here
           image: ${IMAGE_NAME}
@@ -63,7 +62,7 @@ At the end of this tutorial, you will be able to access your application via VPN
 1. We load balance across AKS clusters using `Azure Application Gateway`. Add a couple of lines of config for the application in [config file](https://github.com/hmcts/azure-platform-terraform/blob/master/environments/sbox/backend_lb_config.yaml).
 
  
-           #labs
+          #labs
                - product: "labs"
                  component:     #githubreponame without "labs" prefix
    
