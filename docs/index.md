@@ -17,27 +17,27 @@ At the end of this tutorial, you will be able to access your application via VPN
 
 1. Click `Create` in the Backstage sidebar and select [`Spring Boot Service`](https://backstage.platform.hmcts.net/create) template. Prefix your GitHub repository name with `labs-*`. This enables Jenkins to automatically pickup the folder based on the GitHub repository name.
    
-   Description and default values for various `Fields` in the template.
+   ##### Description and default values for various `Fields` in the template.
    
-    - Product:  `labs`        #Product this component belongs to, normally the team name, e.g. cmc, labs
+         - Product:  `labs`        #Product this component belongs to, normally the team name, e.g. cmc, labs
     
-    - Component:            #Name of the component, e.g. backend
+         - Component:            #Name of the component, e.g. backend
     
-    - Slack contact channel:#Which channel (or user) to contact if there's any issues with this service.
+         - Slack contact channel:#Which channel (or user) to contact if there's any issues with this service.
     
-    - Description:          #Description of the application, a sensible default will be used if not specified
+         - Description:          #Description of the application, a sensible default will be used if not specified
     
-    - HTTP port:            #The port to run the app on.
+         - HTTP port:            #The port to run the app on.
     
-    - GitHub admin team:    #Which GitHub team should have admin permissions, use the format hmcts/<team-id>
+         - GitHub admin team:    #Which GitHub team should have admin permissions, use the format hmcts/<team-id>
    
-    - Owner:                #Owner of the Component
+         - Owner:                #Owner of the Component
    
-    - Host:  `github.com`
+         - Host:  `github.com`
    
-    - Owner:                #The organization, user or project that this repo will belong to
+         - Owner:                #The organization, user or project that this repo will belong to
    
-    - Repository: `labs-<Component>`     #The name of the repository
+         - Repository: `labs-<Component>`     #The name of the repository
    
 2. Create Helm values file with following contents(this is only needed in the lab as the application will be run on sandbox).
 
