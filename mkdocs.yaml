@@ -1,0 +1,7 @@
+site_name: 'Golden-Path-Java'
+
+nav:
+  - Home: index.md
+
+plugins:
+  - techdocs-core
