@@ -39,16 +39,17 @@ At the end of this tutorial, you will be able to access your application via VPN
    
    - Repository: `labs-<Component>`     #The name of the repository
    
+    
 2. Create Helm values file with following contents(this is only needed in the lab as the application will be run on sandbox).
 
    CFT: values.sandbox.template.yaml
 
-   ```yaml
-   java:
-     # Don't modify below here
-     image: ${IMAGE_NAME}
-     ingressHost: ${SERVICE_FQDN}
-   ```
+    ```yaml
+        java:
+          # Don't modify below here
+          image: ${IMAGE_NAME}
+          ingressHost: ${SERVICE_FQDN}
+    ```
    
 3. Get the Pull Request reviewed and merged.
 
@@ -63,12 +64,12 @@ At the end of this tutorial, you will be able to access your application via VPN
 
 1. We load balance across AKS clusters using `Azure Application Gateway`. Add a couple of lines of config for the application in [config file](https://github.com/hmcts/azure-platform-terraform/blob/master/environments/sbox/backend_lb_config.yaml).
 
- ```yaml
- #labs
-    - product: "labs"
-      component:     #githubreponame without "labs" prefix
- ```
-   
+   ```yaml
+   #labs
+      - product: "labs"
+        component:     #githubreponame without "labs" prefix
+   ```
+     
 #### Deploy application
 
 1. We practise [GitOps](https://www.weave.works/technologies/gitops/) for application deployment to Kubernetes.
@@ -78,9 +79,9 @@ At the end of this tutorial, you will be able to access your application via VPN
 
 1. Access the deployed application using the URL.
 
-   ```sh
-      http://<product>-<component>-sbox.service.core-compute-sandbox.internal 
    ```
+   http://<product>-<component>-sbox.service.core-compute-sandbox.internal 
+   ```  
    
 #### Customise application
 
