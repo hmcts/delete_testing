@@ -43,10 +43,12 @@ At the end of this tutorial, you will be able to access your application via VPN
 
    CFT: values.sandbox.template.yaml
 
-        java:
-          # Don't modify below here
-          image: ${IMAGE_NAME}
-          ingressHost: ${SERVICE_FQDN}
+   ```yaml
+   java:
+     # Don't modify below here
+     image: ${IMAGE_NAME}
+     ingressHost: ${SERVICE_FQDN}
+   ```
    
 3. Get the Pull Request reviewed and merged.
 
