@@ -55,7 +55,11 @@ GitHub access is required to complete the steps in this tutorial. See the [onboa
 
 #### Build application
 
-1. Login to Jenkins and select ["HMCTS - Labs"](https://sandbox-build.platform.hmcts.net/job/HMCTS_Sandbox_LABS/) folder. Scan the organization by clicking on `Scan Organization Now`. New repository should be listed under repositories after scan finishes. Logs can be monitored under `Scan Organization Log`. Any GitHub repository that starts with `labs*` will be listed as part of this scan.
+1. Login to Jenkins and select [HMCTS - Labs](https://sandbox-build.platform.hmcts.net/job/HMCTS_Sandbox_LABS/) folder.
+Scan the organization by clicking on `Scan Organization Now`.
+New repository should be listed under repositories after scan finishes.
+Logs can be monitored under `Scan Organization Log`.
+Any GitHub repository that starts with `labs*` will be listed as part of this scan.
 
 
 2. Run the jenkins pipeline against the `master` branch.
