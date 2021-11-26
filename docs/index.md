@@ -101,7 +101,7 @@ Any GitHub repository that starts with `labs*` will be listed as part of this sc
 
 ## Troubleshooting
 
-[Follow](https://hmcts.github.io/ways-of-working/troubleshooting/#troubleshooting-issues) the link to refer to troubleshooting steps.
+See our [troubleshooting](https://hmcts.github.io/ways-of-working/troubleshooting/#troubleshooting-issues) guide.
 
  - Pod/Application logs can viewed using `kubectl` command.
  - For Deployment issue check flux logs / resource status.  
