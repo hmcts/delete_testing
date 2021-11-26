@@ -17,41 +17,29 @@ GitHub access is required to complete the steps in this tutorial. See the [onboa
 
 1. Click `Create` in the Backstage sidebar and select [`Spring Boot Service`](https://backstage.platform.hmcts.net/create) template. Prefix your GitHub repository name with `labs-*`. This enables Jenkins to automatically pickup the folder based on the GitHub repository name.
    
-   Description and default values for various `Fields` in the template.
-   
-   - Product:  `labs`        #Product this component belongs to, normally the team name, e.g. cmc, labs
-    
-   - Component:            #Name of the component, e.g. backend
-    
-   - Slack contact channel:#Which channel (or user) to contact if there's any issues with this service.
-    
-   - Description:          #Description of the application, a sensible default will be used if not specified
-    
-   - HTTP port:            #The port to run the app on.
-    
-   - GitHub admin team:    #Which GitHub team should have admin permissions, use the format hmcts/<team-id>
-   
-   - Owner:                #Owner of the Component
-   
-   - Host:  `github.com`
-   
-   - Owner:                #The organization, user or project that this repo will belong to
-   
-   - Repository: `labs-<Component>`     #The name of the repository
-   
-    
-2. Create Helm values file with following contents(this is only needed in the lab as the application will be run on sandbox).
 
-   CFT: values.sandbox.template.yaml
-
-    ```yaml
-        java:
-          # Don't modify below here
-          image: ${IMAGE_NAME}
-          ingressHost: ${SERVICE_FQDN}
-    ```
+   Default values for various `Fields` in the template.
    
-3. Get the Pull Request reviewed and merged.
+   - Product:  						`labs`     
+    
+   - Component:  					`YourGithubUsername`        
+    
+   - Slack contact channel: 		`cloud-native`
+    	
+   - Description:  					`Deploying a Java application`     
+    
+   - HTTP port:  					`80`          
+    
+   - GitHub admin team:    		    `hmcts/reform`
+   
+   - Owner:                         `dts_cft_developers`
+   
+   - Host:  						`github.com`
+   
+   - Owner:     		            `dts_cft_developers`
+   
+   - Repository: 					`labs-YourGithubUsername`    
+   
 
 #### Build application
 
@@ -66,18 +54,19 @@ Any GitHub repository that starts with `labs*` will be listed as part of this sc
 
 #### Configure load balancing for HA
 
-1. We load balance across AKS clusters using `Azure Application Gateway`. Add a couple of lines of config for the application in [config file](https://github.com/hmcts/azure-platform-terraform/blob/master/environments/sbox/backend_lb_config.yaml).
+1. We load balance across AKS clusters using [Azure Application Gateway](https://docs.microsoft.com/en-us/azure/application-gateway/overview). Add a couple of lines of config for the application in [config file](https://github.com/hmcts/azure-platform-terraform/blob/master/environments/sbox/backend_lb_config.yaml).
 
    ```yaml
    #labs
       - product: "labs"
-        component:     # GitHub repository name without "labs" prefix, e.g. `mohanay`
+        component:     # GitHub repository name without "labs" prefix, e.g. `GithubUsername`
    ```
      
 #### Deploy application
 
 1. We practise [GitOps](https://www.weave.works/technologies/gitops/) for application deployment to Kubernetes.
-   Read the [documentation]( https://github.com/hmcts/cnp-flux-config/blob/master/docs/app-deployment-v2.md) and follow the instructions.
+
+   Follow the app deployment [guide](hmcts/cnp-flux-config@master/docs/app-deployment-v2.md#add-a-new-application) in cnp-flux-config.
 
 #### Access application
 
@@ -89,9 +78,11 @@ Any GitHub repository that starts with `labs*` will be listed as part of this sc
    
 #### Customise application
 
-1. Helm Charts can be customised by updating corresponding values file for each environment. Update `values.yaml` file located under `/charts/<repo-name>` directory.  
- 
-2. Environment variables can be passed by updating the corresponding values file in Helm chart. 
+1. We are going to customise the application by changing default landing page for the application by passing environment variables. 
+
+2. Helm Charts can be customised by updating `values.yaml` file located under `/charts/<repo-name>` directory.  
+
+3. Environment variables can be passed by updating values file in Helm chart. 
  
    ```yaml
    java:
@@ -99,12 +90,10 @@ Any GitHub repository that starts with `labs*` will be listed as part of this sc
        FAVOURITE_FRUIT: plum   # KEY must be in uppercase
    ```
 
+
 ## Troubleshooting
 
 See our [troubleshooting](https://hmcts.github.io/ways-of-working/troubleshooting/#troubleshooting-issues) guide.
-
- - Pod/Application logs can viewed using `kubectl` command.
- - For Deployment issue check flux logs / resource status.  
         
 
 ## Slack Channels
