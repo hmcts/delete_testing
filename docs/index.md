@@ -8,7 +8,7 @@ At the end of this tutorial, you will be able to access your application via VPN
 
 ## Prerequisites
 
-`Github` access is required to complete the steps in this tutorial. Following the [link](https://hmcts.github.io/onboarding/team/github.html#github) to request access.
+GitHub access is required to complete the steps in this tutorial. See the [onboarding guide](https://hmcts.github.io/onboarding/team/github.html#github) to get setup.
 
 
 ## Steps
