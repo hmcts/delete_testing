@@ -1,6 +1,6 @@
 ## Overview
 
-This guide walk-through the process of deploying an Sample Java application in CFT.
+This guide will walk you through the process of deploying a sample Java application in CFT.
 
 An application will be generated from a template and deployed to a kubernetes cluster.
 
