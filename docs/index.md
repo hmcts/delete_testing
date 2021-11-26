@@ -6,7 +6,7 @@ An application will be generated from a template and deployed to a kubernetes cl
 
 At the end of this tutorial, you will be able to access your application via VPN and will have made changes to it.
 
-## Prerequisite
+## Prerequisites
 
 `Github` access is required to complete the steps in this tutorial. Following the [link](https://hmcts.github.io/onboarding/team/github.html#github) to request access.
 
