@@ -67,7 +67,7 @@ GitHub access is required to complete the steps in this tutorial. See the [onboa
    ```yaml
    #labs
       - product: "labs"
-        component:     #githubreponame without "labs" prefix
+        component:     # GitHub repository name without "labs" prefix, e.g. `mohanay`
    ```
      
 #### Deploy application
