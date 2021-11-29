@@ -97,6 +97,7 @@ We are going to customise the application by changing default landing page for t
 
 6. Access the application using same `URL`.
 
+
 ## Troubleshooting
 
 See our [troubleshooting](https://hmcts.github.io/ways-of-working/troubleshooting/#troubleshooting-issues) guide.
