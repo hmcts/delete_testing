@@ -1,14 +1,14 @@
 ## Overview
 
-This guide walk-through the process of deploying an Sample Java application in CFT.
+This guide will walk you through the process of deploying a sample Java application in CFT.
 
 An application will be generated from a template and deployed to a kubernetes cluster.
 
 At the end of this tutorial, you will be able to access your application via VPN and will have made changes to it.
 
-## Prerequisite
+## Prerequisites
 
-`Github` access is required to complete the steps in this tutorial. Following the [link](https://hmcts.github.io/onboarding/team/github.html#github) to request access.
+GitHub access is required to complete the steps in this tutorial. See the [onboarding guide](https://hmcts.github.io/onboarding/team/github.html#github) to get setup.
 
 
 ## Steps
@@ -17,63 +17,56 @@ At the end of this tutorial, you will be able to access your application via VPN
 
 1. Click `Create` in the Backstage sidebar and select [`Spring Boot Service`](https://backstage.platform.hmcts.net/create) template. Prefix your GitHub repository name with `labs-*`. This enables Jenkins to automatically pickup the folder based on the GitHub repository name.
    
-   Description and default values for various `Fields` in the template.
-   
-   - Product:  `labs`        #Product this component belongs to, normally the team name, e.g. cmc, labs
-    
-   - Component:            #Name of the component, e.g. backend
-    
-   - Slack contact channel:#Which channel (or user) to contact if there's any issues with this service.
-    
-   - Description:          #Description of the application, a sensible default will be used if not specified
-    
-   - HTTP port:            #The port to run the app on.
-    
-   - GitHub admin team:    #Which GitHub team should have admin permissions, use the format hmcts/<team-id>
-   
-   - Owner:                #Owner of the Component
-   
-   - Host:  `github.com`
-   
-   - Owner:                #The organization, user or project that this repo will belong to
-   
-   - Repository: `labs-<Component>`     #The name of the repository
-   
-    
-2. Create Helm values file with following contents(this is only needed in the lab as the application will be run on sandbox).
 
-   CFT: values.sandbox.template.yaml
-
-    ```yaml
-        java:
-          # Don't modify below here
-          image: ${IMAGE_NAME}
-          ingressHost: ${SERVICE_FQDN}
-    ```
+   Default values for various `Fields` in the template.
    
-3. Get the Pull Request reviewed and merged.
+   - Product:  						`labs`     
+    
+   - Component:  					`YourGithubUsername`        
+    
+   - Slack contact channel: 		`cloud-native`
+    	
+   - Description:  					`Deploying a Java application`     
+    
+   - HTTP port:  					`80`          
+    
+   - GitHub admin team:    		    `hmcts/reform`
+   
+   - Owner:                         `dts_cft_developers`
+   
+   - Host:  						`github.com`
+   
+   - Owner:     		            `dts_cft_developers`
+   
+   - Repository: 					`labs-YourGithubUsername`    
+   
 
 #### Build application
 
-1. Login to Jenkins and select ["HMCTS - Labs"](https://sandbox-build.platform.hmcts.net/job/HMCTS_Sandbox_LABS/) folder. Scan the organization by clicking on `Scan Organization Now`. New repository should be listed under repositories after scan finishes. Logs can be monitored under `Scan Organization Log`. Any GitHub repository that starts with `labs*` will be listed as part of this scan.
+1. Login to Jenkins and select [HMCTS - Labs](https://sandbox-build.platform.hmcts.net/job/HMCTS_Sandbox_LABS/) folder.
+Scan the organization by clicking on `Scan Organization Now`.
+New repository should be listed under repositories after scan finishes.
+Logs can be monitored under `Scan Organization Log`.
+Any GitHub repository that starts with `labs*` will be listed as part of this scan.
 
 
 2. Run the jenkins pipeline against the `master` branch.
 
 #### Configure load balancing for HA
 
-1. We load balance across AKS clusters using `Azure Application Gateway`. Add a couple of lines of config for the application in [config file](https://github.com/hmcts/azure-platform-terraform/blob/master/environments/sbox/backend_lb_config.yaml).
+1. We load balance across AKS clusters using [Azure Application Gateway](https://docs.microsoft.com/en-us/azure/application-gateway/overview). Add a couple of lines of config for the application in [config file](https://github.com/hmcts/azure-platform-terraform/blob/master/environments/sbox/backend_lb_config.yaml).
 
    ```yaml
    #labs
       - product: "labs"
-        component:     #githubreponame without "labs" prefix
+        component:     # GitHub repository name without "labs" prefix, e.g. `GithubUsername`
    ```
      
 #### Deploy application
 
 1. We practise [GitOps](https://www.weave.works/technologies/gitops/) for application deployment to Kubernetes.
-   Read the [documentation]( https://github.com/hmcts/cnp-flux-config/blob/master/docs/app-deployment-v2.md) and follow the instructions.
+
+   Follow the app deployment [guide](hmcts/cnp-flux-config@master/docs/app-deployment-v2.md#add-a-new-application) in cnp-flux-config.
 
 #### Access application
 
@@ -85,22 +78,34 @@ At the end of this tutorial, you will be able to access your application via VPN
    
 #### Customise application
 
-1. Helm Charts can be customised by updating corresponding values file for each environment. Update `values.yaml` file located under `/charts/<repo-name>` directory.  
- 
-2. Environment variables can be passed by updating the corresponding values file in Helm chart. 
+1. We are going to customise the application by changing default landing page for the application by passing environment variables. 
+
+2. Helm Charts can be customised by updating `values.yaml` file located under `/charts/<repo-name>` directory.  
+
+3. Environment variables can be passed by updating values file in the Helm chart. 
  
    ```yaml
    java:
      environment:
        FAVOURITE_FRUIT: plum   # KEY must be in uppercase
    ```
+4. Update code to reference environment variable in [file](src/main/java/uk/gov/hmcts/reform/mohanalatest/controllers/RootController.java).
+
+   ```java
+    public ResponseEntity<String> welcome() {
+        return ok("Welcome to labs-<githubusername>, my favourite fruit is " +  System.getenv("FAVOURITE_FRUIT"));
+    }
+    ```
+5. Review and merge `Pull Request`.
+
+6. Run the jenkins pipeline against the `master` branch.
+
+7. Access the application using same `URL`.
+
 
 ## Troubleshooting
 
-[Follow](https://hmcts.github.io/ways-of-working/troubleshooting/#troubleshooting-issues) the link to refer to troubleshooting steps.
-
- - Pod/Application logs can viewed using `kubectl` command.
- - For Deployment issue check flux logs / resource status.  
+See our [troubleshooting](https://hmcts.github.io/ways-of-working/troubleshooting/#troubleshooting-issues) guide.
         
 
 ## Slack Channels
