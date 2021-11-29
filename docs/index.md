@@ -98,7 +98,7 @@ Any GitHub repository that starts with `labs*` will be listed as part of this sc
     ```
 5. Review and merge `Pull Request`.
 
-6. Run the jenkins pipeline against the `master` branch.
+6. Run the Jenkins pipeline against the `master` branch (this will trigger automatically on the production Jenkins instance).
 
 7. Access the application using same `URL`.
 
