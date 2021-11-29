@@ -47,7 +47,7 @@ GitHub access is required to complete the steps in this tutorial. See the [onboa
 Scan the organization by clicking on `Scan Organization Now`.
 The new repository should be listed under repositories after the scan finishes.
 Logs can be monitored under `Scan Organization Log`.
-Any GitHub repository that starts with `labs*` will be listed as part of this scan.
+Any GitHub repository that starts with `labs-*` will be listed as part of this scan.
 
 
 2. Run the jenkins pipeline against the `master` branch.
