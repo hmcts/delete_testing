@@ -110,5 +110,6 @@ See our [troubleshooting](https://hmcts.github.io/ways-of-working/troubleshootin
 
 ## Slack Channels
 
-- `#golden-path` is for support requests to the Platform Operations team
-- `#labs-build-notices` jenkins build notices channel
+- `#golden-path` is for community discussion about the tutorials.
+- `#labs-build-notices` jenkins build notices channel.
+- `#platops-help`   is for support requests to the `Platform Operations` team.
