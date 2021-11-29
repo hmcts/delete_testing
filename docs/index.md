@@ -15,30 +15,30 @@ GitHub access is required to complete the steps in this tutorial. See the [onboa
 
 #### Create a Repository and build pipeline
 
-1. Click `Create` in the Backstage sidebar and select [`Spring Boot Service`](https://backstage.platform.hmcts.net/create) template. Prefix your GitHub repository name with `labs-*`. This enables Jenkins to automatically pickup the folder based on the GitHub repository name.
-   
+1. Click `Create` in the Backstage sidebar and select [`Spring Boot Service`](https://backstage.platform.hmcts.net/create) template. 
+
 
    Default values for various `Fields` in the template.
    
-   - Product:  						`labs`     
+   - Product:                       `labs`
     
-   - Component:  					`YourGithubUsername`        
+   - Component:  				    `YourGithubUsername`
     
-   - Slack contact channel: 		`cloud-native`
+   - Slack contact channel:         `cloud-native`
     	
-   - Description:  					`Deploying a Java application`     
+   - Description:  			        `Deploying a Java application`
     
-   - HTTP port:  					`80`          
+   - HTTP port:  			        `80`
     
-   - GitHub admin team:    		    `hmcts/reform`
+   - GitHub admin team:    	        `hmcts/reform`
    
    - Owner:                         `dts_cft_developers`
    
-   - Host:  						`github.com`
+   - Host:  			            `github.com`
    
    - Owner:     		            `dts_cft_developers`
    
-   - Repository: 					`labs-YourGithubUsername`    
+   - Repository: 			        `labs-YourGithubUsername`
    
 
 #### Build application
@@ -56,11 +56,6 @@ Any GitHub repository that starts with `labs-*` will be listed as part of this s
 
 1. We load balance across AKS clusters using [Azure Application Gateway](https://docs.microsoft.com/en-us/azure/application-gateway/overview). Add a couple of lines of config for the application in [config file](https://github.com/hmcts/azure-platform-terraform/blob/master/environments/sbox/backend_lb_config.yaml).
 
-   ```yaml
-   #labs
-      - product: "labs"
-        component:  your-github-username
-   ```
      
 #### Deploy application
 
@@ -80,28 +75,27 @@ Any GitHub repository that starts with `labs-*` will be listed as part of this s
 
 We are going to customise the application by changing default landing page for the application by passing environment variables. 
 
-2. Helm Charts can be customised by updating `values.yaml` file located under `/charts/<repo-name>` directory.  
+1. Helm Charts can be customised by updating `values.yaml` file located under `/charts/<repo-name>` directory.  
 
-3. Environment variables can be passed by updating values file in the Helm chart. 
+2. Environment variables can be passed by updating values file in the Helm chart. 
  
    ```yaml
    java:
      environment:
        FAVOURITE_FRUIT: plum   # KEY must be in uppercase
    ```
-4. Update code to reference environment variable in [RootController.java](src/main/java/uk/gov/hmcts/reform/mohanalatest/controllers/RootController.java).
+3. Update code to reference environment variable in [RootController.java](src/main/java/uk/gov/hmcts/reform/mohanalatest/controllers/RootController.java).
 
    ```java
     public ResponseEntity<String> welcome() {
         return ok("Welcome to your app, my favourite fruit is " +  System.getenv("FAVOURITE_FRUIT"));
     }
-    ```
-5. Ask someone on your team to review your `pull request` and then merge it.
+   ```
+4. Ask someone on your team to review your `pull request` and then merge it.
 
-6. Run the Jenkins pipeline against the `master` branch (this will trigger automatically on the production Jenkins instance).
+5. Run the Jenkins pipeline against the `master` branch (this will trigger automatically on the production Jenkins instance).
 
-7. Access the application using same `URL`.
-
+6. Access the application using same `URL`.
 
 ## Troubleshooting
 
@@ -112,4 +106,4 @@ See our [troubleshooting](https://hmcts.github.io/ways-of-working/troubleshootin
 
 - `#golden-path` is for community discussion about the tutorials.
 - `#labs-build-notices` jenkins build notices channel.
-- `#platops-help`   is for support requests to the `Platform Operations` team.
+- `#platops-help`   is for raising support requests to the `Platform Operations` team.
