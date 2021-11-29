@@ -1,0 +1,7 @@
+site_name: 'Golden path - Java'
+
+nav:
+  - Getting started: index.md
+
+plugins:
+  - techdocs-core
