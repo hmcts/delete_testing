@@ -89,7 +89,7 @@ Any GitHub repository that starts with `labs*` will be listed as part of this sc
      environment:
        FAVOURITE_FRUIT: plum   # KEY must be in uppercase
    ```
-4. Update code to reference environment variable in [file](src/main/java/uk/gov/hmcts/reform/mohanalatest/controllers/RootController.java).
+4. Update code to reference environment variable in [RootController.java](src/main/java/uk/gov/hmcts/reform/mohanalatest/controllers/RootController.java).
 
    ```java
     public ResponseEntity<String> welcome() {
