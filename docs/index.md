@@ -78,7 +78,7 @@ Any GitHub repository that starts with `labs-*` will be listed as part of this s
    
 #### Customise application
 
-1. We are going to customise the application by changing default landing page for the application by passing environment variables. 
+We are going to customise the application by changing default landing page for the application by passing environment variables. 
 
 2. Helm Charts can be customised by updating `values.yaml` file located under `/charts/<repo-name>` directory.  
 
