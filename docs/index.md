@@ -45,9 +45,9 @@ GitHub access is required to complete the steps in this tutorial. See the [onboa
 
 1. Login to Jenkins and select [HMCTS - Labs](https://sandbox-build.platform.hmcts.net/job/HMCTS_Sandbox_LABS/) folder.
 Scan the organization by clicking on `Scan Organization Now`.
-New repository should be listed under repositories after scan finishes.
+The new repository should be listed under repositories after the scan finishes.
 Logs can be monitored under `Scan Organization Log`.
-Any GitHub repository that starts with `labs*` will be listed as part of this scan.
+Any GitHub repository that starts with `labs-*` will be listed as part of this scan.
 
 
 2. Run the jenkins pipeline against the `master` branch.
@@ -59,7 +59,7 @@ Any GitHub repository that starts with `labs*` will be listed as part of this sc
    ```yaml
    #labs
       - product: "labs"
-        component:     # GitHub repository name without "labs" prefix, e.g. `GithubUsername`
+        component:  your-github-username
    ```
      
 #### Deploy application
@@ -78,7 +78,7 @@ Any GitHub repository that starts with `labs*` will be listed as part of this sc
    
 #### Customise application
 
-1. We are going to customise the application by changing default landing page for the application by passing environment variables. 
+We are going to customise the application by changing default landing page for the application by passing environment variables. 
 
 2. Helm Charts can be customised by updating `values.yaml` file located under `/charts/<repo-name>` directory.  
 
@@ -89,11 +89,11 @@ Any GitHub repository that starts with `labs*` will be listed as part of this sc
      environment:
        FAVOURITE_FRUIT: plum   # KEY must be in uppercase
    ```
-4. Update code to reference environment variable in [file](src/main/java/uk/gov/hmcts/reform/mohanalatest/controllers/RootController.java).
+4. Update code to reference environment variable in [RootController.java](src/main/java/uk/gov/hmcts/reform/mohanalatest/controllers/RootController.java).
 
    ```java
     public ResponseEntity<String> welcome() {
-        return ok("Welcome to labs-<githubusername>, my favourite fruit is " +  System.getenv("FAVOURITE_FRUIT"));
+        return ok("Welcome to your app, my favourite fruit is " +  System.getenv("FAVOURITE_FRUIT"));
     }
     ```
 5. Ask someone on your team to review your `pull request` and then merge it.
