@@ -82,13 +82,26 @@ Any GitHub repository that starts with `labs*` will be listed as part of this sc
 
 2. Helm Charts can be customised by updating `values.yaml` file located under `/charts/<repo-name>` directory.  
 
-3. Environment variables can be passed by updating values file in Helm chart. 
+3. Environment variables can be passed by updating values file in the Helm chart. 
  
    ```yaml
    java:
      environment:
        FAVOURITE_FRUIT: plum   # KEY must be in uppercase
    ```
+4. Update code to reference environment variable in [file](src/main/java/uk/gov/hmcts/reform/mohanalatest/controllers/RootController.java).
+
+   ```java
+    public ResponseEntity<String> welcome() {
+        return ok("Welcome to labs-<githubusername>, my favourite fruit is " +  System.getenv("FAVOURITE_FRUIT"));
+    }
+    ```
+5. Review and merge `Pull Request`.
+
+6. Run the jenkins pipeline against the `master` branch.
+
+7. Access the application using same `URL`.
+
 
 ## Troubleshooting
 
