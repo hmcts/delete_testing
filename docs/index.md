@@ -93,7 +93,7 @@ Any GitHub repository that starts with `labs*` will be listed as part of this sc
 
    ```java
     public ResponseEntity<String> welcome() {
-        return ok("Welcome to labs-<githubusername>, my favourite fruit is " +  System.getenv("FAVOURITE_FRUIT"));
+        return ok("Welcome to your app, my favourite fruit is " +  System.getenv("FAVOURITE_FRUIT"));
     }
     ```
 5. Review and merge `Pull Request`.
