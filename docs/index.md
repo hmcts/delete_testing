@@ -90,7 +90,6 @@ Any GitHub repository that starts with `labs*` will be listed as part of this sc
        FAVOURITE_FRUIT: plum   # KEY must be in uppercase
    ```
 
-
 ## Troubleshooting
 
 See our [troubleshooting](https://hmcts.github.io/ways-of-working/troubleshooting/#troubleshooting-issues) guide.
