@@ -59,7 +59,7 @@ Any GitHub repository that starts with `labs-*` will be listed as part of this s
    ```yaml
    #labs
       - product: "labs"
-        component:     # GitHub repository name without "labs" prefix, e.g. `GithubUsername`
+        component:  your-github-username
    ```
      
 #### Deploy application
