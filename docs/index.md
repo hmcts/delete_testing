@@ -22,23 +22,23 @@ GitHub access is required to complete the steps in this tutorial. See the [onboa
    
    - Product:                       `labs`
     
-   - Component:  				    `YourGithubUsername`
+   - Component:                     `YourGithubUsername`
     
    - Slack contact channel:         `cloud-native`
     	
-   - Description:  			        `Deploying a Java application`
+   - Description:                   `Deploying a Java application`
     
-   - HTTP port:  			        `80`
+   - HTTP port:                     `80`
     
-   - GitHub admin team:    	        `hmcts/reform`
+   - GitHub admin team:             `hmcts/reform`
    
    - Owner:                         `dts_cft_developers`
    
-   - Host:  			            `github.com`
+   - Host:                          `github.com`
    
-   - Owner:     		            `dts_cft_developers`
+   - Owner:                         `dts_cft_developers`
    
-   - Repository: 			        `labs-YourGithubUsername`
+   - Repository:                    `labs-YourGithubUsername`
    
 
 #### Build application
@@ -56,6 +56,11 @@ Any GitHub repository that starts with `labs-*` will be listed as part of this s
 
 1. We load balance across AKS clusters using [Azure Application Gateway](https://docs.microsoft.com/en-us/azure/application-gateway/overview). Add a couple of lines of config for the application in [config file](https://github.com/hmcts/azure-platform-terraform/blob/master/environments/sbox/backend_lb_config.yaml).
 
+   ```yaml
+   #labs
+      - product: "labs"
+        component:     # GitHub repository name without "labs" prefix, e.g. `YourGithubUsername`
+   ```
      
 #### Deploy application
 
