@@ -96,7 +96,7 @@ Any GitHub repository that starts with `labs*` will be listed as part of this sc
         return ok("Welcome to labs-<githubusername>, my favourite fruit is " +  System.getenv("FAVOURITE_FRUIT"));
     }
     ```
-5. Review and merge `Pull Request`.
+5. Ask someone on your team to review your `pull request` and then merge it.
 
 6. Run the Jenkins pipeline against the `master` branch (this will trigger automatically on the production Jenkins instance).
 
