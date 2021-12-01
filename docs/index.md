@@ -68,6 +68,7 @@ Any GitHub repository that starts with `labs-*` will be listed as part of this s
 
 1. We practise [GitOps](https://www.weave.works/technologies/gitops/) for application deployment to Kubernetes.
 
+   Application will be deployed in `labs` kubernetes namespace which has been already been created. 
    Follow the app deployment [guide](hmcts/cnp-flux-config@master/docs/app-deployment-v2.md#add-a-new-application) in cnp-flux-config.
 
 #### Access application
@@ -91,7 +92,7 @@ We are going to customise the application by changing default landing page for t
      environment:
        FAVOURITE_FRUIT: plum   # KEY must be in uppercase
    ```
-3. Update code to reference environment variable in [RootController.java](src/main/java/uk/gov/hmcts/reform/mohanalatest/controllers/RootController.java).
+3. Update code to reference environment variable in `RootController.java` file located under `src/main/java/uk/gov/hmcts/reform/<Component>/controllers/`.
 
    ```java
     public ResponseEntity<String> welcome() {
