@@ -19,9 +19,11 @@ GitHub access is required to complete the steps in this tutorial. See the [onboa
 
 
    Default values for various `Fields` in the template.
+   
    - Page-1
+   
        - Product:                       `labs`
-        
+           
        - Component:                     `YourGithubUsername`
         
        - Slack contact channel:         `cloud-native`
@@ -33,6 +35,7 @@ GitHub access is required to complete the steps in this tutorial. See the [onboa
        - GitHub admin team:             `hmcts/reform`
        
        - Owner:                         `dts_cft_developers`
+       
        
    - Page-2
    
