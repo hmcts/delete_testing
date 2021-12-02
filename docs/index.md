@@ -72,7 +72,7 @@ Any GitHub repository that starts with `labs-*` will be listed as part of this s
 1. We practise [GitOps](https://www.weave.works/technologies/gitops/) for application deployment to Kubernetes.
 
    Application will be deployed in `labs` kubernetes namespace which has been already been created. 
-   Follow the app deployment [guide](hmcts/cnp-flux-config@master/docs/app-deployment-v2.md#add-a-new-application) in cnp-flux-config.
+   Follow the app deployment [guide](https://github.com/hmcts/cnp-flux-config/blob/master/docs/app-deployment-v2.md#application) in cnp-flux-config.
 
 #### Access application
 
