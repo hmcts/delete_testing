@@ -76,9 +76,9 @@ You will need to add a couple of lines of config for the application to the load
 
 
 1. To complete this section you will need your pull request to be approved, someone on your team should be able to do this.
-If you get stuck try asking in #platops-code-review on Slack.
+If you get stuck try asking in [#platops-code-review](https://hmcts-reform.slack.com/app_redirect?channel=golden-path) on Slack.
 Once approved and the build has passed then merge your pull request.
-If you have a permissions issue then ask in #labs on Slack.
+If you have a permissions issue then ask in [#golden-path](https://hmcts-reform.slack.com/app_redirect?channel=golden-path) on Slack.
      
 #### Deploy application
 
@@ -135,7 +135,18 @@ The chart is in the `charts/$app-name` folder.
 
 1. Run the Jenkins pipeline against the `master` branch (this will trigger automatically on the production Jenkins instance).
 
-1. Access the application using same `URL`.
+1. Reload your application in your browser and check it now shows your favourite fruit.
+
+## Feedback
+
+[comment]: <> (As of December 2021)
+This is a new way of onboarding developers that we are trying out.
+If you could provide feedback it would really help us improve it for others.
+The [survey](https://forms.office.com/r/P2YbcLVAr4) has 4 questions and will only take you a couple of minutes to complete.
+
+If you've found a problem with the guide please [report an issue](https://github.com/hmcts/golden-path-java/issues) instead, or you can create a pull request to correct it yourself.
+
+If you need help with the lab please reach out in [#golden-path](https://hmcts-reform.slack.com/app_redirect?channel=golden-path).
 
 
 ## Troubleshooting
@@ -145,6 +156,6 @@ See our [troubleshooting](https://hmcts.github.io/ways-of-working/troubleshootin
 
 ## Slack Channels
 
-- `#golden-path` is for community discussion about the tutorials.
-- `#labs-build-notices` Jenkins build notices channel.
-- `#platops-help`   is for raising support requests to the `Platform Operations` team.
+- [#golden-path](https://hmcts-reform.slack.com/app_redirect?channel=golden-path) is for community discussion about the tutorials.
+- [#labs-build-notices](https://hmcts-reform.slack.com/app_redirect?channel=labs-build-notices) Jenkins build notices channel.
+- [#platops-help](https://hmcts-reform.slack.com/app_redirect?channel=platops-help) is for raising support requests to the `Platform Operations` team.
