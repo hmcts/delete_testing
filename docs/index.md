@@ -135,7 +135,18 @@ The chart is in the `charts/$app-name` folder.
 
 1. Run the Jenkins pipeline against the `master` branch (this will trigger automatically on the production Jenkins instance).
 
-1. Access the application using same `URL`.
+1. Reload your application in your browser and check it now shows your favourite fruit.
+
+## Feedback
+
+[comment]: <> (As of December 2021)
+This is a new way of onboarding developers that we are trying out.
+If you could provide feedback it would really help us improve it for others.
+The [survey](https://forms.office.com/r/P2YbcLVAr4) has 4 questions and will only take you a couple of minutes to complete.
+
+If you've found a problem with the guide please [report an issue](https://github.com/hmcts/golden-path-java/issues) instead, or you can create a pull request to correct it yourself.
+
+If you need help with the lab please reach out in #golden-path on Slack.
 
 
 ## Troubleshooting
