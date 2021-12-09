@@ -31,7 +31,7 @@ Click `Create` in the Backstage sidebar and select [`Spring Boot Service`](https
       
    - Description:                   `Deploying a Java application`
 
-   - HTTP port:                     `80`
+   - HTTP port:                     `8080` - do not use any port number lower than 1024
 
    - GitHub admin team:             `hmcts/reform` - you can also use your own team
 
