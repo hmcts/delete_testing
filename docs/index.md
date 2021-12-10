@@ -90,14 +90,15 @@ For the benefit of of this tutorial we have created a separate [guide](https://g
 
 It's also worth taking a look at the app deployment [guide](https://github.com/hmcts/cnp-flux-config/blob/master/docs/app-deployment-v2.md#application) in cnp-flux-config to understand how you would do this ordinarily.
 
+A couple of minutes after the PR you created has been merged, you should see your HelmRelease resource deployed and the tag of your application's image updated to the latest tag with the `prod-xxxxxxx-xxxxxxxxxxxxxx` naming convention.
 
-The cluster can be connected to with:
+To check this you can connect to the cluster by running the command below:
 
 ```command
  az aks get-credentials --resource-group cft-sbox-00-rg --name cft-sbox-00-aks --subscription DCD-CFTAPPS-SBOX --overwrite-existing
 ```
 
-To make sure your pod is running as expected and to check the status of your HelmRelease run the following commands (swap YourGithubUsername with your GitHub username):
+To make sure your pod is running as expected and to check the status of your HelmRelease run the following commands (make sure to swap YourGithubUsername with your GitHub username):
 
 ```command
  kubectl get hr labs-YourGithubUsername -n labs
