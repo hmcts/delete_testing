@@ -88,7 +88,7 @@ Your application will be deployed in `labs` Kubernetes namespace which has been 
 
 For the benefit of of this tutorial we have created a separate [guide](https://github.com/hmcts/cnp-flux-config/blob/master/labs/java/README.md#creating-the-flux-config-for-your-java-lab-application) to help you create the flux config needed to deploy your lab application with flux and to enable flux to automate updating image tags to the latest version of your image.
 
-It's also worth taking a look at the app deployment [guide](https://github.com/hmcts/cnp-flux-config/blob/master/docs/app-deployment-v2.md#application) in cnp-flux-config to understand how you would do this ordinarily.
+It's also worth taking a look at the app deployment [guide](https://github.com/hmcts/cnp-flux-config/blob/master/docs/app-deployment-v2.md#application) in cnp-flux-config to understand how you would do this normally.
 
 A couple of minutes after the PR you created has been merged, you should see your HelmRelease resource deployed and the tag of your application's image updated to the latest tag with the `prod-xxxxxxx-xxxxxxxxxxxxxx` naming convention.
 
