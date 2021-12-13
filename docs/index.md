@@ -4,7 +4,7 @@ This guide will walk you through the process of deploying a sample Java applicat
 
 An application will be generated from a template and deployed to a Kubernetes cluster.
 
-At the end of this tutorial, you will be able to access your application via the VPN and will have made changes to it.
+At the end of this tutorial, you will be able to access your application via the HMCTS VPN and will have made changes to it.
 
 ## Prerequisites
 
