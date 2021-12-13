@@ -84,13 +84,25 @@ If you have a permissions issue then ask in [#golden-path](https://hmcts-reform.
 
 We use [GitOps](https://www.weave.works/technologies/gitops/) for application deployment to Kubernetes.
 
-Your application will be deployed in `labs` Kubernetes namespace which has been already been created. 
-Follow the app deployment [guide](https://github.com/hmcts/cnp-flux-config/blob/master/docs/app-deployment-v2.md#application) in cnp-flux-config.
+Your application will be deployed in `labs` Kubernetes namespace which has been already been created.
 
-The cluster can be connected to with:
+For the benefit of of this tutorial we have created a separate [guide](https://github.com/hmcts/cnp-flux-config/blob/master/labs/java/README.md#creating-the-flux-config-for-your-java-lab-application) to help you create the flux config needed to deploy your lab application with flux and to enable flux to automate updating image tags to the latest version of your image.
+
+It's also worth taking a look at the app deployment [guide](https://github.com/hmcts/cnp-flux-config/blob/master/docs/app-deployment-v2.md#application) in cnp-flux-config to understand how you would do this normally.
+
+A couple of minutes after the PR you created has been merged, you should see your HelmRelease resource deployed and the tag of your application's image updated to the latest tag with the `prod-xxxxxxx-xxxxxxxxxxxxxx` naming convention.
+
+To check this you can connect to the cluster by running the command below:
 
 ```command
  az aks get-credentials --resource-group cft-sbox-00-rg --name cft-sbox-00-aks --subscription DCD-CFTAPPS-SBOX --overwrite-existing
+```
+
+To make sure your pod is running as expected and to check the status of your HelmRelease run the following commands (make sure to swap YourGithubUsername with your GitHub username):
+
+```command
+ kubectl get hr labs-YourGithubUsername -n labs
+ kubectl get pods -l app.kubernetes.io/name=labs-YourGithubUsername-java -n labs
 ```
 
 #### Access application
@@ -147,7 +159,6 @@ The [survey](https://forms.office.com/r/P2YbcLVAr4) has 4 questions and will onl
 If you've found a problem with the guide please [report an issue](https://github.com/hmcts/golden-path-java/issues) instead, or you can create a pull request to correct it yourself.
 
 If you need help with the lab please reach out in [#golden-path](https://hmcts-reform.slack.com/app_redirect?channel=golden-path).
-
 
 ## Troubleshooting
 
