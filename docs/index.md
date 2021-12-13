@@ -4,7 +4,7 @@ This guide will walk you through the process of deploying a sample Java applicat
 
 An application will be generated from a template and deployed to a Kubernetes cluster.
 
-At the end of this tutorial, you will be able to access your application via VPN and will have made changes to it.
+At the end of this tutorial, you will be able to access your application via the VPN and will have made changes to it.
 
 ## Prerequisites
 
@@ -84,7 +84,7 @@ If you have a permissions issue then ask in [#golden-path](https://hmcts-reform.
 
 We use [GitOps](https://www.weave.works/technologies/gitops/) for application deployment to Kubernetes.
 
-Your application will be deployed in `labs` Kubernetes namespace which has been already been created.
+Your application will be deployed in `labs` Kubernetes namespace which has already been created.
 
 For the benefit of of this tutorial we have created a separate [guide](https://github.com/hmcts/cnp-flux-config/blob/master/labs/java/README.md#creating-the-flux-config-for-your-java-lab-application) to help you create the flux config needed to deploy your lab application with flux and to enable flux to automate updating image tags to the latest version of your image.
 
@@ -124,7 +124,7 @@ Welcome to labs-$yourGitHubUsername application
 
 We are going to update the application by changing the home page with an environment variable.
 
-Environment variables are managed in the [Helm](https://helm.sh) chart that has created for you.
+Environment variables are managed in the [Helm](https://helm.sh) chart that has been created for you.
 The chart is in the `charts/$app-name` folder.
 
 1. Open the `values.yaml` file inside the Helm chart.  
@@ -136,7 +136,7 @@ The chart is in the `charts/$app-name` folder.
      environment:
        FAVOURITE_FRUIT: plum
    ```
-1. Update code to reference environment variable in `RootController.java` the file is in `src/main/java/uk/gov/hmcts/reform/<Component>/controllers/`.
+1. Update the code to reference the new environment variable in `RootController.java` the file is in `src/main/java/uk/gov/hmcts/reform/<Component>/controllers/`.
 
    ```java
     public ResponseEntity<String> welcome() {
