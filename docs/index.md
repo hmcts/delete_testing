@@ -72,7 +72,7 @@ You will need to add a couple of lines of config for the application to the load
         component:     # GitHub repository name without "labs" prefix, e.g. `YourGithubUsername`
    ```
 
-1. Scroll down to the bottom to the 'Commit changes' section, commit the file and create a pull request.
+1. Scroll down to the bottom to the 'Commit changes' section. Select `create a new branch for this commit` and give your branch a name. Commit the file and create a pull request.
 
 
 1. To complete this section you will need your pull request to be approved, someone on your team should be able to do this.
