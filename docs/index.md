@@ -54,7 +54,7 @@ Any GitHub repository that starts with `labs-*` will be listed as part of this s
 
 1. Click on your repository name.
 
-1. Run the Jenkins pipeline against the `master` branch by clicking the play icon.
+1. Wait for your build to complete against the `master` branch, (click the Play button if it hasn't started by itself).
 
 #### Configure load balancing for high availability
 
