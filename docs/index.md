@@ -10,6 +10,14 @@ At the end of this tutorial, you will be able to access your application via the
 
 GitHub access is required to complete the steps in this tutorial. See the [onboarding guide](https://hmcts.github.io/onboarding/team/github.html#github) to get setup.
 
+Join the [slack channels](https://github.com/hmcts/golden-path-java/blob/master/docs/index.md#slack-channels)
+
+## Slack Channels
+
+- [#golden-path](https://hmcts-reform.slack.com/app_redirect?channel=golden-path) is for community discussion about the tutorials.
+- [#labs-build-notices](https://hmcts-reform.slack.com/app_redirect?channel=labs-build-notices) Jenkins build notices channel.
+- [#platops-help](https://hmcts-reform.slack.com/app_redirect?channel=platops-help) is for raising support requests to the `Platform Operations` team.
+
 
 ## Steps
 
@@ -163,10 +171,3 @@ If you need help with the lab please reach out in [#golden-path](https://hmcts-r
 ## Troubleshooting
 
 See our [troubleshooting](https://hmcts.github.io/ways-of-working/troubleshooting/#troubleshooting-issues) guide.
-        
-
-## Slack Channels
-
-- [#golden-path](https://hmcts-reform.slack.com/app_redirect?channel=golden-path) is for community discussion about the tutorials.
-- [#labs-build-notices](https://hmcts-reform.slack.com/app_redirect?channel=labs-build-notices) Jenkins build notices channel.
-- [#platops-help](https://hmcts-reform.slack.com/app_redirect?channel=platops-help) is for raising support requests to the `Platform Operations` team.
