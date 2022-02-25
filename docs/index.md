@@ -1,4 +1,4 @@
-## Overview
+# Overview
 
 This guide will walk you through the process of deploying a sample Java application in CFT.
 
@@ -8,52 +8,48 @@ At the end of this tutorial, you will be able to access your application via the
 
 ## Prerequisites
 
-GitHub access is required to complete the steps in this tutorial. See the [onboarding guide](https://hmcts.github.io/onboarding/team/github.html#github) to get setup.
+Before starting this tutorial, make sure you have:
 
-Join the [slack channels](https://github.com/hmcts/golden-path-java/blob/master/docs/index.md#slack-channels)
-
-## Slack Channels
-
-- [#golden-path](https://hmcts-reform.slack.com/app_redirect?channel=golden-path) is for community discussion about the tutorials.
-- [#labs-build-notices](https://hmcts-reform.slack.com/app_redirect?channel=labs-build-notices) Jenkins build notices channel.
-- [#platops-help](https://hmcts-reform.slack.com/app_redirect?channel=platops-help) is for raising support requests to the `Platform Operations` team.
-
+- An account on HMCTS Azure AD. See the [onboarding guide](https://hmcts.github.io/onboarding/person/#azure-ad-groups) to get set up.
+- Access to the HMCTS GitHub organisation. See the [onboarding guide](https://hmcts.github.io/onboarding/team/github.html#github) to get setup.
+- (Recommended) Join the below Slack channels
+  - [#golden-path](https://hmcts-reform.slack.com/app_redirect?channel=golden-path) is for community discussion about the tutorials.
+  - [#labs-build-notices](https://hmcts-reform.slack.com/app_redirect?channel=labs-build-notices) Jenkins build notices channel.
+  - [#platops-help](https://hmcts-reform.slack.com/app_redirect?channel=platops-help) is for raising support requests to the `Platform Operations` team.
 
 ## Steps
 
-#### Create a repository
+### Create a repository
 
-First we are going to create a GitHub repository with our template, you'll need to fill in a few fields and select a name for the GitHub repository.
+First, we are going to create a GitHub repository with our template, you'll need to fill in a few fields and select a name for the GitHub repository.
 
-Click `Create` in the Backstage sidebar and select [`Spring Boot Service`](https://backstage.platform.hmcts.net/create) template. 
+Click `Create` in the Backstage sidebar and select [`Spring Boot Service`](https://backstage.platform.hmcts.net/create) template.
 
    Fill out the fields:
-   
-   
+
 - Page 1 - Provide some simple information
-   - Product:                       `labs`
-      
-   - Component:                     `YourGithubUsername` - make sure you update this
+  - Product:                       `labs`
 
-   - Slack contact channel:         `cloud-native`
-      
-   - Description:                   `Deploying a Java application`
+  - Component:                     `YourGithubUsername` - make sure you update this
 
-   - HTTP port:                     `8080` - do not use any port number lower than 1024
+  - Slack contact channel:         `cloud-native`
 
-   - GitHub admin team:             `hmcts/reform` - you can also use your own team
+  - Description:                   `Deploying a Java application`
 
-   - Owner:                         `dts_cft_developers` - normally you would use your teams AzureAD group here
-    
+  - HTTP port:                     `8080` - do not use any port number lower than 1024
+
+  - GitHub admin team:             `hmcts/reform` - you can also use your own team
+
+  - Owner:                         `dts_cft_developers` - normally you would use your teams AzureAD group here
+
 - Page 2 - Choose a location
-   - Host:                          `github.com`
-   
-   - Owner:                         `hmcts`
-   
-   - Repository:                    `labs-YourGithubUsername`
- 
+  - Host:                          `github.com`
 
-#### Build application
+  - Owner:                         `hmcts`
+
+  - Repository:                    `labs-YourGithubUsername`
+
+### Build application
 
 1. Log in to Sandbox Jenkins and select [HMCTS - Labs](https://sandbox-build.platform.hmcts.net/job/HMCTS_Sandbox_LABS/) folder. Check if your repository is there, if it's not then scan the organization by clicking on `Scan Organization Now`.
 The new repository should be listed under repositories after the scan finishes.
@@ -64,9 +60,9 @@ Any GitHub repository that starts with `labs-*` will be listed as part of this s
 
 1. Wait for your build to complete against the `master` branch, (click the Play button if it hasn't started by itself).
 
-#### Configure load balancing for high availability
+### Configure load balancing for high availability
 
-We load balance across Kubernetes clusters using [Azure Application Gateway](https://docs.microsoft.com/en-us/azure/application-gateway/overview). 
+We load balance across Kubernetes clusters using [Azure Application Gateway](https://docs.microsoft.com/en-us/azure/application-gateway/overview).
 
 You will need to add a couple of lines of config for the application to the load balancer config file.
 
@@ -82,13 +78,12 @@ You will need to add a couple of lines of config for the application to the load
 
 1. Scroll down to the bottom to the 'Commit changes' section. Select `create a new branch for this commit` and give your branch a name. Commit the file and create a pull request.
 
-
 1. To complete this section you will need your pull request to be approved, someone on your team should be able to do this.
 If you get stuck try asking in [#platops-code-review](https://hmcts-reform.slack.com/app_redirect?channel=golden-path) on Slack.
 Once approved and the build has passed then merge your pull request.
 If you have a permissions issue then ask in [#golden-path](https://hmcts-reform.slack.com/app_redirect?channel=golden-path) on Slack.
-     
-#### Deploy application
+
+### Deploy application
 
 We use [GitOps](https://www.weave.works/technologies/gitops/) for application deployment to Kubernetes.
 
@@ -103,6 +98,7 @@ A couple of minutes after the PR you created has been merged, you should see you
 To check this you can connect to the cluster by running the command below:
 
 ```command
+ az login
  az aks get-credentials --resource-group cft-sbox-00-rg --name cft-sbox-00-aks --subscription DCD-CFTAPPS-SBOX --overwrite-existing
 ```
 
@@ -113,22 +109,23 @@ To make sure your pod is running as expected and to check the status of your Hel
  kubectl get pods -l app.kubernetes.io/name=labs-YourGithubUsername-java -n labs
 ```
 
-#### Access application
+### Access application
 
 If all went well your application should be visible now.
 
 The URL will be (update the GitHub username variable):
 
-   ```
+   ```text
    http://labs-$yourGitHubUsername-sandbox.service.core-compute-sandbox.internal 
    ```  
+
 Open this in your browser, you should see:
 
-```
+```text
 Welcome to labs-$yourGitHubUsername application
 ```
 
-#### Customise application
+### Customise application
 
 We are going to update the application by changing the home page with an environment variable.
 
@@ -137,13 +134,14 @@ The chart is in the `charts/$app-name` folder.
 
 1. Open the `values.yaml` file inside the Helm chart.  
 
-1. Add an environment value to the chart: 
- 
+1. Add an environment value to the chart:
+
    ```yaml
    java:
      environment:
        FAVOURITE_FRUIT: plum
    ```
+
 1. Update the code to reference the new environment variable in `RootController.java` the file is in `src/main/java/uk/gov/hmcts/reform/<Component>/controllers/`.
 
    ```java
@@ -151,6 +149,7 @@ The chart is in the `charts/$app-name` folder.
         return ok("Welcome to your app, my favourite fruit is " +  System.getenv("FAVOURITE_FRUIT"));
     }
    ```
+
 1. Ask someone on your team to review your `pull request` and then merge it.
 
 1. Run the Jenkins pipeline against the `master` branch (this will trigger automatically on the production Jenkins instance).

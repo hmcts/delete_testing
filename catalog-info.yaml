@@ -6,6 +6,6 @@ metadata:
     github.com/project-slug: hmcts/golden-path-java
     backstage.io/techdocs-ref: dir:.
 spec:
-  type: other
+  type: documentation
   lifecycle: unknown
   owner: dts_platform_operations
