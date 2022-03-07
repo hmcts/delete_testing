@@ -10,6 +10,8 @@ The purpose is:
 
 Install the [techdocs-cli](https://backstage.io/docs/features/techdocs/cli)
 
+Make sure you have Docker running.
+
 Run it:
 ```shell
 techdocs-cli serve
