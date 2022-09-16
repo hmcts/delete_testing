@@ -54,7 +54,6 @@ Click `Create` in the Backstage sidebar and select [`Spring Boot Service`](https
 1. Log in to Sandbox Jenkins and select [HMCTS - J to Z](https://sandbox-build.platform.hmcts.net/job/HMCTS_j_to_z_Sandbox/) folder. Check if your repository is there, if it's not then scan the organization by clicking on `Scan Organization Now`.
 The new repository should be listed under repositories after the scan finishes.
 Logs can be monitored under `Scan Organization Log`.
-Any GitHub repository that starts with `labs-*` will be listed as part of this scan.
 
 1. Click on your repository name.
 
