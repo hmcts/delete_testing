@@ -38,7 +38,7 @@ Click `Create` in the Backstage sidebar and select [`Spring Boot Service`](https
 
   - HTTP port:                     `8080` - do not use any port number lower than 1024
 
-  - GitHub admin team:             `hmcts/reform` - you can also use your own team
+  - GitHub admin team:             `hmcts/base` - you can also use your own team
 
   - Owner:                         `dts_cft_developers` - normally you would use your teams AzureAD group here
 
